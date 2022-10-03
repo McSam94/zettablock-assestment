@@ -136,7 +136,7 @@ const Home: NextPage = () => {
           items={tabItems}
           contentClassName={styles["tab-content"]}
           renderContent={({ item }) => (
-            <DataTable query={listOfQuery[item as number]} />
+            <DataTable key={item} query={listOfQuery[item as number]} />
           )}
           onNewTabCreate={() => dispatch(createNewTab())}
           onTabDelete={(item) => dispatch(deleteTab(item as number))}
