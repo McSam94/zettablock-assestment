@@ -5,8 +5,8 @@ The stack I'm using is following:
 - 🍎 Framework => Nextjs (created using create-next-app cli)
 - ✨ Styling => Scss
 - 🚀 State Management => Redux Saga (Generator)
-- 💣 Typing - Typescript
-- ✏️ API - RESTful
+- 💣 Typing => Typescript
+- ✏️ API => RESTful
 
 ---
 
