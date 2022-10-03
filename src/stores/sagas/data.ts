@@ -167,7 +167,7 @@ function* undo({
         ? yield call(DataService.createData, payload.data)
         : yield call(DataService.UpdateData, payload.data.id, payload.data);
 
-    if (result.status === 200) {
+    if (result.status === 201 || result.status === 200) {
       yield put({
         type: UNDO_ACTION.SUCCESS,
         payload: {
