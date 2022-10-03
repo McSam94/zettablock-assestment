@@ -218,10 +218,6 @@ const DataTable: FC<DataTableProps> = ({ query }) => {
   }, [query, dispatch]);
 
   useEffect(() => {
-    dispatch(getDataList(query));
-  }, [query, dispatch]);
-
-  useEffect(() => {
     if (hasDeletedData) {
       setIsDialogOpen(false);
       dispatch(resetDeleteData());
