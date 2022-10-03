@@ -1,0 +1,57 @@
+$table-row-background-color: #eeede7;
+$table-header-background-color: #b9b7bd;
+$table-expandable-background-color: ghostwhite;
+
+.container {
+  display: grid;
+}
+
+.header {
+  padding: 1.2rem 0.8rem;
+  text-transform: capitalize;
+  font-weight: bolder;
+  background-color: $table-header-background-color;
+}
+
+.row {
+  grid-column: 1 / -1;
+  display: grid;
+  cursor: pointer;
+  &:nth-child(even) {
+    background-color: $table-row-background-color;
+  }
+}
+
+.cell {
+  padding: 1.2rem 0.8rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.expandableRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  grid-column: 1/-1;
+  background-color: $table-expandable-background-color;
+  overflow-x: scroll;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  padding: 1.2rem;
+
+  &Expand {
+    transform: rotate(180deg);
+    transition: transform 0.2s ease-in-out;
+
+    &Rotated {
+      transform: rotate(0deg);
+      transition: transform 0.2s ease-in-out;
+    }
+  }
+  & * {
+    margin-right: 0.6rem;
+  }
+}

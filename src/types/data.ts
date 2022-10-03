@@ -1,8 +1,10 @@
 export type SORT_TYPE = "asc" | "desc";
-
 export interface IQuery {
+  page: number;
+  limit: number;
   search?: string;
-  sort?: SORT_TYPE;
+  sortBy?: string | null;
+  order?: SORT_TYPE | null;
 }
 
 export interface IData {
@@ -11,12 +13,13 @@ export interface IData {
   updatedAt: Date;
   description: string;
   type: string;
-  id: number;
+  id: string;
+  operationName?: string;
+  variables?: Object;
+  query?: string;
 }
 
-export interface IDatas {
-  getDatas: IData[];
-}
+export type IDatas = IData[];
 
 export type IDataMutation = {
   addData: IData;

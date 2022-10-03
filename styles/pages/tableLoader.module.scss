@@ -1,0 +1,15 @@
+$table-header-background-color: #b9b7bd;
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 5rem;
+  background-color: $table-header-background-color;
+}
+
+.row {
+  height: 65px;
+}

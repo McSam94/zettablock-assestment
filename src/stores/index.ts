@@ -20,34 +20,33 @@ const persistConfig = {
   storage,
 };
 
-export const buildStore = (initialState = {}) => {
-  const middlewares = [];
-  const enhancers = [];
+const middlewares = [];
+const enhancers = [];
 
-  // Connect the sagas to the redux store
-  const sagaMiddleware = createSagaMiddleware();
-  middlewares.push(sagaMiddleware);
+// Connect the sagas to the redux store
+const sagaMiddleware = createSagaMiddleware();
+middlewares.push(sagaMiddleware);
 
-  // do not remove spread operator
-  enhancers.push(applyMiddleware(...middlewares));
+// do not remove spread operator
+enhancers.push(applyMiddleware(...middlewares));
 
-  // Redux persist
-  const persistedReducer = persistReducer(persistConfig, rootReducer);
+// Redux persist
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
-  const store = configureStore({
-    reducer: persistedReducer,
-    enhancers,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware({
-        serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-        },
-      }),
-  });
-  const persistor = persistStore(store);
+export const store = configureStore({
+  reducer: persistedReducer,
+  enhancers,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
+export const persistor = persistStore(store);
 
-  // Kick off the root saga
-  sagaMiddleware.run(rootSaga);
+// Kick off the root saga
+sagaMiddleware.run(rootSaga);
 
-  return { store, persistor };
-};
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
