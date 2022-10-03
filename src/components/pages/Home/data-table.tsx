@@ -36,13 +36,10 @@ const TableCell: FC<TableCellProps> = ({
   const [allowEdit, setAllowEdit] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState<string>("");
 
-  const { hasUpdatedData, isUpdatingData, hasDeletedData, query } =
-    useAppSelector((state) => ({
-      hasUpdatedData: state.data.hasUpdatedData,
-      isUpdatingData: state.data.isUpdatingData,
-      hasDeletedData: state.data.hasDeletedData,
-      query: state.data.tabsQuery[state.data.activeTab],
-    }));
+  const { hasUpdatedData, isUpdatingData } = useAppSelector((state) => ({
+    hasUpdatedData: state.data.hasUpdatedData,
+    isUpdatingData: state.data.isUpdatingData,
+  }));
 
   const setupEdit = useCallback(() => {
     setAllowEdit(true);
@@ -70,13 +67,6 @@ const TableCell: FC<TableCellProps> = ({
       setAllowEdit(false);
     }
   }, [hasUpdatedData, dispatch]);
-
-  useEffect(() => {
-    if (hasDeletedData) {
-      dispatch(resetDeleteData());
-      dispatch(getDataList(query));
-    }
-  }, [hasDeletedData, dispatch, query]);
 
   return (
     <>
@@ -141,7 +131,6 @@ const DataTable: FC<DataTableProps> = ({ query }) => {
   );
 
   const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
-  const [search, setSearch] = useState<string>("");
 
   const idToDelete = useRef<string>();
 
@@ -221,8 +210,9 @@ const DataTable: FC<DataTableProps> = ({ query }) => {
     if (hasDeletedData) {
       setIsDialogOpen(false);
       dispatch(resetDeleteData());
+      dispatch(getDataList(query));
     }
-  }, [hasDeletedData, dispatch]);
+  }, [hasDeletedData, dispatch, query]);
 
   return (
     <>
