@@ -101,7 +101,7 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <div className={styles.title}>Data</div>
+        <div className={styles.title}>📝 Data</div>
         <div className={styles.toolbox}>
           <span
             className={classNames(styles.toolboxBtn, {

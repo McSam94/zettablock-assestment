@@ -1,35 +1,23 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Development Stack
 
-## Getting Started
+The stack I'm using is following:
 
-First, run the development server:
+- 🍎 Framework => Nextjs (created using create-next-app cli)
+- ✨ Styling => Scss
+- 🚀 State Management => Redux Saga (Generator)
+- 💣 Typing - Typescript
+- ✏️ API - RESTful
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Why these stack?
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **NextJS**: Nextjs has been my favorite framework lately because nextjs provide alot of good feature such as directory structure routing, server side rendering and build-in CSS Support
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+- **Scss**: I've been using tailwind CSS a lot lately but since it's not allow, I'll be using the traditional scss way.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **Redux Saga**: Looking at the requirement, I thought the code would be more readable with redux structure and easy to manage complex state. Not to mention easier to debug with time travel debugging.
 
-## Learn More
+- **Typescript**: Typescript is for safe type checking purpose and make the system more solid.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# zettablock-assestment
+- **RESTful**: I notice that the company is using graphql but I'm not familiar with it and not confident to finish it within 2 days. So i decide to use Axios.
