@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode, useState, MouseEvent } from "react";
 import classNames from "classnames";
 import styles from "@styles/components/tab.module.scss";
 import { useCallback } from "react";
@@ -44,7 +44,12 @@ const TabItem: FC<TabItemProps> = ({
       onClick={() => setActiveTab(item.value)}
     >
       <span>{item.label}</span>
-      <span onClick={() => onTabDelete?.(item.value)}>
+      <span
+        onClick={(evt: MouseEvent<HTMLSpanElement>) => {
+          evt.stopPropagation();
+          onTabDelete?.(item.value);
+        }}
+      >
         {shouldShowDelete ? "x" : null}
       </span>
     </div>

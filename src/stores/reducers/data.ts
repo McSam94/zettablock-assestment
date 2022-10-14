@@ -246,11 +246,14 @@ const dataReducer = (state = initialState, action: ActionType): DataState => {
       };
     }
     case DELETE_TAB: {
+      const newTabsQuery = state.tabsQuery.filter(
+        (_, idx) => idx !== action.payload.index
+      );
+
       return {
         ...state,
-        tabsQuery: [
-          ...state.tabsQuery.filter((_, idx) => idx !== action.payload.index),
-        ],
+        tabsQuery: [...newTabsQuery],
+        activeTab: newTabsQuery.length - 1,
       };
     }
     case UNDO_ACTION.REQUEST: {
